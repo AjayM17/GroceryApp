@@ -14,7 +14,4 @@ Profile Page
 
 
 ![](readme_images/image_1.png)
-![](readme_images/image_2.png)
-![](readme_images/image_3.png)
-![](readme_images/image_4.png)
-![](readme_images/image_5.png)
+
