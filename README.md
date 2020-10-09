@@ -12,7 +12,5 @@ Order Details
 Manage Address Screen
 Profile Page
 
-
-![](readme_images/image_1.png)
 ![](readme_images/image_2.png)
 
