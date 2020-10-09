@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <div class="header" style="    display: flex;
+    align-items: center;">
+      <!-- <ion-icon class="menu-icon" name="menu-outline"></ion-icon> -->
+      <div style="flex: 1;
+      text-align: center;">
+        Manage Address
+      </div>
+      <ion-icon name="add-outline" style="    font-size: 24px;
+      margin-right: 12px;
+      font-weight: 500;" (click)="addNewAddress()"></ion-icon>
+    </div>
+
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+  <div *ngFor="let address of addresses;let i = index" class="address" (click)="setDefault(address)">
+   
+      <ion-icon class="icon location"></ion-icon>
+    <div style="    flex: 1;
+    margin-left: 6px;">
+      <div class="title">{{address.title}}</div>
+      <div class="desc"> {{address.address}} pincode : {{address.pin_code}}</div>
+      <div style="    justify-content: flex-end;
+      display: flex;">
+        <span class="btn" (click)="edit(address,$event)">Edit</span>
+        <span class="btn" (click)="deleteAddress(address.id,$event,i)">Delete</span>
+      </div>
+    </div>
+  </div>
+
+
+</ion-content>

@@ -1,0 +1,102 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+ion-item{
+    --highlight-height: 0px;
+}
+
+ion-header{
+    border-bottom: 1px solid #ccc;
+}
+.header-md::after{
+    background-image: none !important;
+}
+
+.footer-md::before{
+    background-image: unset;
+}
+ion-toolbar{
+    --background:  var(--ion-color-primary);
+    color: white;
+    font-weight: bold;
+    ion-buttons{
+        position: absolute;
+    }
+    
+}
+
+// .ruppee-icon{
+//     background-repeat: no-repeat;
+//     background-size: contain;
+//     background-image: url('./assets/icon/inr.svg');
+// }
+
+// .icon {
+//     background-repeat: no-repeat;
+//     background-size: contain;
+//     // font-size: 14px;
+    
+// }
+
+// .location{
+//     background-image: url('./assets/icon/location-point.svg');
+// }
+
+// .order-history{
+//     background-image: url('./assets/icon/history.svg');
+// }
+
+// .notification{
+//     background-image: url('./assets/icon/bell.svg');
+// }
+
+// .terms-icon{
+//     background-image: url('./assets/icon/register.svg');
+// }
+// .help{
+//     background-image: url('./assets/icon/050-info.svg');
+// }
+// .policy{
+//     background-image: url('./assets/icon/tag.svg');
+// }
+// .about{
+//     background-image: url('./assets/icon/app.svg');
+// }
+// .offers{
+//     background-image: url('./assets/icon/tag.svg');
+// }
+
+// .add-cart-icon{
+//     // content: url('./assets/icon/shopping-cart1.svg');
+  
+// }
+
+// .add-cart{
+//     background-repeat: no-repeat;
+//     background-size: contain;
+//     background-image: url('./assets/icon/cart-arrow-down.svg');
+// }

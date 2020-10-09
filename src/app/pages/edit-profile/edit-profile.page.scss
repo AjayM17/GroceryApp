@@ -1,0 +1,16 @@
+ion-row{
+    margin-bottom:16px
+}
+
+.input{
+    border-bottom: 1px solid var(--ion-color-neutral2);
+    color: var(--ion-color-neutral1);
+    font-size: 14px;
+    padding-left: 12px;
+}
+
+.label{
+    color: var(--ion-color-neutral1);
+    font-weight: 500;
+    font-size: 14px;
+}

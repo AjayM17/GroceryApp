@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <div class="header">
+      <!-- <ion-icon class="menu-icon" name="menu-outline"></ion-icon> -->
+      <div style="flex: 1;
+      text-align: center;">
+       Order History
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div *ngFor="let order of orders" class="order">
+    <div class="date">
+      Date   {{order.order_date| date:"M/d/yy,EEEE"}}
+    </div>
+    <div class="items">
+    <span  *ngFor="let item of order.cart_items; let i =index">
+      {{item.product_name}} <span *ngIf="i != order.cart_items.length-1">,</span>
+    </span>
+  </div>
+  <div class="amount">
+    Amt. <ion-icon src='../assets/icon/inr.svg' ></ion-icon>{{order.total_amount}}
+  </div>
+  </div>
+ 
+    <!-- <div *ngFor="let order of orders" class="order">
+      <div class="date">
+        {{order.order_date| date:"medium"}}
+      </div>
+     <div *ngFor="let cart_item of order.cart_items" class="cart-item-containor">
+      <div class="product-image" [ngStyle]="{'background-image' : 'url(' + IMAGES_BASE_URL + cart_item.product_image  + ')'}">
+      </div>
+      <div class="product-details">
+        <div class="product-name">
+          {{cart_item.product_name}}
+        </div>
+        <div class="details">
+          <div class="price">
+            Rs {{cart_item.product_price * cart_item.product_quantity}}
+          </div>
+         
+        </div>
+      </div>
+     
+     </div>
+     <div class="total-amount">
+       Total Rs {{order.total_amount}}
+     </div>
+    </div> -->
+
+</ion-content>

@@ -1,0 +1,123 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <div class="header">
+      <!-- <ion-icon class="menu-icon" name="menu-outline"></ion-icon> -->
+      <div style="flex: 1;
+      text-align: center;">
+        Edit Info
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="profileUpdateForm" (ngSubmit)="updateProfile()">
+  <ion-grid style="margin-top: 32px;">
+    <ion-row class="ion-align-items-center ion-no-padding">
+      <ion-col size="4" class="label">
+        <ion-label >Name</ion-label>
+      </ion-col>
+      <ion-col size="8" class="input" >
+        <ion-input class="ion-no-padding" type="text" formControlName="name"></ion-input>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-align-items-center ion-no-padding">
+      <ion-col size="4" class="label">
+       
+        <ion-label >Email</ion-label>
+    
+      </ion-col>
+      <ion-col size="8" class="input" >
+       
+      <ion-input class="ion-no-padding"  type="email" formControlName="email"></ion-input>
+       
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-align-items-center ion-no-padding">
+      <ion-col size="4" class="label">
+       
+        <ion-label >Mobile Number</ion-label>
+    
+      </ion-col>
+      <ion-col size="8" class="input" >
+        <ion-input class="ion-no-padding" type="tel" maxlength="10" formControlName="mobile_number"></ion-input>
+      
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-align-items-center ion-no-padding">
+      <ion-col size="4" class="label">
+       
+        <ion-label >Address</ion-label>
+      </ion-col>
+      <ion-col size="8" class="input" >
+      
+        <ion-textarea class="ion-no-padding"  type="text" formControlName="address" rows="4"></ion-textarea>
+      </ion-col>
+    </ion-row>
+    
+  </ion-grid>
+  <ion-button expand="block" class="btn" type="submit">Update</ion-button>
+  </form>
+</ion-content>
+
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>My Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content style="    --padding-end: 16px;
+--padding-start: 16px;
+--padding-top: 16px;
+--padding-bottom: 16px;">
+  <form [formGroup]="profileUpdateForm" (ngSubmit)="updateProfile()">
+    <ion-item class="ion-no-padding">
+      
+      <ion-input type="text" formControlName="name"></ion-input>
+    </ion-item>
+    <div *ngIf="getFormControls.name.errors && formSubmitted">
+      <div *ngIf="getFormControls.name.errors.required" class="error_msg" >
+        please enter  name
+      </div>
+    </div>
+    <ion-item class="ion-no-padding">
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="email" formControlName="email"></ion-input>
+    </ion-item>
+    <div *ngIf="getFormControls.email.errors && formSubmitted">
+      <div *ngIf="getFormControls.email.errors.required" class="error_msg" >
+        please enter  email
+      </div>
+      <div *ngIf="getFormControls.email.errors.pattern" class="error_msg" >
+        invalid email
+      </div>
+    </div>
+    <ion-item class="ion-no-padding">
+      <ion-label position="floating">Mobile Number</ion-label>
+      <ion-input type="tel" maxlength="10" formControlName="mobile_number"></ion-input>
+    </ion-item>
+    <div *ngIf="getFormControls.mobile_number.errors && formSubmitted">
+      <div *ngIf="getFormControls.mobile_number.errors.required" class="error_msg" >
+        please enter  mobile number
+      </div>
+    </div>
+    <ion-item class="ion-no-padding">
+      <ion-label position="floating">Address</ion-label>
+      <ion-textarea type="text" formControlName="address" rows="4"></ion-textarea>
+    </ion-item>
+    <div *ngIf="getFormControls.address.errors && formSubmitted">
+      <div *ngIf="getFormControls.address.errors.required" class="error_msg" >
+        please enter  address
+      </div>
+    </div>
+    <ion-button expand="block" class="btn" type="submit">Update</ion-button>
+  </form>
+</ion-content> -->

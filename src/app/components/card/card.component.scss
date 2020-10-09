@@ -1,0 +1,48 @@
+.product{
+    padding: 8px;
+    background: white;
+    border-radius: 4px;
+    // margin-right: 12px;
+    height: 200px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    display: flex;
+flex-direction: column;
+justify-content: space-between;
+    .product-image{
+        width: 100%;
+        height: 90px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        background-image: url('../../../assets//icon/inr.svg');
+        }
+
+        .product-name{
+            font-size: 13px;
+            margin-top: 12px;
+            font-weight: 500;
+            color: var(--ion-color-neutral1);
+            margin-bottom: 4px;
+        }
+        .product-price{
+            font-size: 13px;
+            display: flex;
+            color: var(--ion-color-neutral1);
+            align-items: center;
+        }
+
+        .add-btn{
+            --padding-start: 10px;
+            --padding-end: 10px;
+            text-transform: none;
+            height: 34px;
+            font-size: 14px;
+            color: var(--ion-color-neutral3);
+            --background: var(--ion-color-secondary1);
+            --padding-top: 0px;
+            --padding-bottom: 0px;
+           
+        }
+    
+}
+   

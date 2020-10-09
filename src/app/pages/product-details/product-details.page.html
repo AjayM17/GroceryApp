@@ -1,0 +1,69 @@
+<ion-content>
+  <ion-icon style="    position: absolute;
+  right: 8px;
+  top: 8px;
+  font-size: 28px;" (click)="dismiss()" name="close-outline"></ion-icon>
+
+  <div class="full-image" [ngStyle]="{'background-image' : 'url(' + IMAGES_BASE_URL + product_details.a_img  + ')'}">
+  </div>
+  <div class="product-details">
+    <div class="name">
+      {{product_details.name}}
+    </div>
+    <div class="price">
+      <ion-icon name="inr"></ion-icon> {{product_details.price}} /Kg
+    </div>
+    <div class="price" style="    margin-top: 32px;">
+      Description
+    </div>
+    <div class="description" [innerHtml]="product_details.description"></div>
+
+    <div class="controls-containor">
+      <div class="per_quanity">500 gm</div>
+       <div>X</div> 
+       <div class="controls">
+        <ion-icon class="decre" name="remove-outline" (click)="desceaseQuantity()"></ion-icon>
+        <span class="value"> {{quanity_value * 2}}</span>
+        <ion-icon class="incre" name="add-outline" (click)="increaseQuanity()"></ion-icon>
+      </div>
+    </div>
+
+    <div class="detail">
+      <div>
+        Quanity
+      </div>
+      <div>
+        <span *ngIf="quanity_value == 0.5"> 500 gm</span>
+        <span *ngIf="quanity_value > 0.5">
+
+          {{quanity_value}} Kg
+        </span>
+      </div>
+    </div>
+
+    <div class="detail">
+      <div>
+        Price
+      </div>
+      <div style="display: flex;
+      align-items: center;">
+        <ion-icon name="inr"></ion-icon> {{total_cost}}
+      </div>
+    </div>
+    <div class="buttons">
+      <ion-button class="buy btn" (click)="goToPlaceOrder()">
+      
+       <ion-icon style="    margin-right: 5px;" name="wallet"></ion-icon>
+       Buy now
+       </ion-button>
+       <ion-button class="btn add" (click)="addToCart()">
+        Add to cart
+         <ion-icon slot="start" name="add-to-cart"></ion-icon>
+       </ion-button>
+    </div>
+
+
+
+  </div>
+</ion-content>
+

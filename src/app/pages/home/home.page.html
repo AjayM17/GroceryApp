@@ -1,0 +1,93 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="header">
+      <ion-icon class="menu-icon" name="menu-outline" (click)="toggleMenu()"></ion-icon>
+      <div style="flex: 1;
+      text-align: center;">
+        Fresh From Vypin
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="search-bar">
+    <ion-input (keydown.enter)="searchResult($event)" [(ngModel)]="search_key"></ion-input>
+    <ion-icon name="search"></ion-icon>
+
+  </div>
+  <div class="category-containor">
+    <div *ngFor="let category of categories" class="product" (click)="getCategoryData(category)">
+      <ion-button class="category" [ngClass]="category.cat_id == selected_category ? 'active' :''">{{category.cat}}
+      </ion-button>
+    </div>
+  </div>
+
+
+  <div class="fresh-arrivals" *ngIf="fresh_arrivals.length != 0">
+
+    <div class="heading">
+      <div class="title">
+        Fresh Arrivals
+      </div>
+      <div class="more" routerLink="/more-products/{{selected_category}}/{{more_product_type}}">
+        <span>see more</span>
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </div>
+    </div>
+    <div class="sub-heading">
+      New arrivals for you
+    </div>
+    <div class="product-containor">
+      <app-card style="margin-right: 12px;" (click)="productDetails(product)" *ngFor="let product of fresh_arrivals" [product_image]="IMAGES_BASE_URL +product.a_img"
+      [product]="product">
+      </app-card>
+    </div>
+
+  </div>
+
+  <div class="fresh-arrivals">
+
+    <div class="heading">
+      <div class="title">
+        Best Sellers
+      </div>
+      <div class="more" routerLink="/more-products/{{selected_category}}/{{more_product_type}}">
+        <span>see more</span>
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </div>
+    </div>
+    <div class="sub-heading">
+      Our most popular products
+    </div>
+    <div class="product-containor">
+      <app-card style="margin-right: 12px;"  (click)="productDetails(product)" *ngFor="let product of products" [product_image]="IMAGES_BASE_URL +product.a_img"
+      [product]="product">
+      </app-card>
+    </div>
+
+  </div>
+
+  <div class="fresh-arrivals">
+
+    <div class="heading">
+      <div class="title">
+        All Products
+      </div>
+      <div class="more" routerLink="/more-products/{{selected_category}}/{{more_product_type}}">
+        <span>see more</span>
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </div>
+    </div>
+    <div class="sub-heading">
+      Everything we offer
+    </div>
+    <div class="product-containor">
+      <app-card style="margin-right: 12px;"  (click)="productDetails(product)" *ngFor="let product of products" [product_image]="IMAGES_BASE_URL +product.a_img"
+        [product]="product">
+      </app-card>
+    </div>
+
+  </div>
+
+</ion-content>

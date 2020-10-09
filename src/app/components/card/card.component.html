@@ -1,0 +1,14 @@
+<div  class="product" >
+  <div class="product-image" [ngStyle]="{'background-image' : 'url('+ product_image  + ')'}">
+  </div>
+  <div class="product-name">
+    {{product.name}}
+  </div>
+  <div class="product-price">
+    <ion-icon name="inr" ></ion-icon>  <span>{{product.price}} /Kg</span>
+  </div>
+  <ion-button class="add-btn" (click)="addToCart($event)">
+   Add to cart
+    <ion-icon slot="start" name="add-to-cart" style="font-size: 14px;"></ion-icon>
+  </ion-button>
+</div>

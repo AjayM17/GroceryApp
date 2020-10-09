@@ -1,0 +1,29 @@
+ion-content{
+    --background:var(--ion-color-neutral2)
+}
+
+.address{
+    display: flex;
+    padding: 8px;
+    background: white;
+    margin-bottom: 8px;
+    .title{
+        font-weight: 500;
+        color: var(--ion-color-neutral1);
+        font-size: 13px;
+        margin-bottom: 3px;
+    }
+
+    .desc{
+        color: var(--ion-color-neutral1);
+    font-size: 13px;
+    }
+
+    .btn{
+        font-size: 13px;
+        margin: 0px 3px;
+        color: var(--ion-color-secondary1);
+        font-weight: 500;
+
+    }
+}

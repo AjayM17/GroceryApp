@@ -1,0 +1,67 @@
+<ion-content>
+
+  <div class="containor">
+    <ion-icon class="back-icon" name="chevron-back-outline" (click)="goBack()"></ion-icon>
+    <div class="header">
+      <div class="logo">
+
+      </div>
+      <div class="h1">
+
+        Welcome Back
+      </div>
+      <div class="h2">
+        Log in to continue
+      </div>
+    </div>
+    <form class="form-containor" [formGroup]="loginForm" (ngSubmit)="loginUser()">
+      <div>
+        <ion-item class="ion-no-padding">
+          <ion-input type="tel" placeholder="Enter phone number" maxlength="10" formControlName="mobile_number">
+          </ion-input>
+        </ion-item>
+
+        <div *ngIf="getFormControls.mobile_number.errors && formSubmitted">
+          <div *ngIf="getFormControls.mobile_number.errors.required" class="error_msg">
+            please enter mobile number
+          </div>
+        </div>
+
+        <ion-item class="ion-no-padding">
+
+          <ion-input [type]="password_visible ? 'text':'password'" placeholder="Enter password"
+            formControlName="password"></ion-input>
+          <ion-icon style="font-size: 18px;" [name]="password_visible ? 'eye-off-outline' :'eye-outline'"
+            (click)='togglePasswordVisibility()'></ion-icon>
+        </ion-item>
+        <div *ngIf="getFormControls.password.errors && formSubmitted">
+          <div *ngIf="getFormControls.password.errors.required" class="error_msg">
+            please enter password
+          </div>
+        </div>
+        <div class="forgot_password">
+          Forgot Password?
+        </div>
+
+        <div class="terms">
+          <ion-checkbox></ion-checkbox>
+          <span> Remember me</span>
+        </div>
+      </div>
+      <div class="form-footer">
+        <ion-button class="btn" type="submit">Log In</ion-button>
+        <div style="font-size: 14px;; color: 'var(--ion-color-neutral1)';" routerLink="/signup">
+          Don't have account? <span style="font-weight: 500;color:'var(--ion-color-secondary1)'"> Signup</span>
+        </div>
+      </div>
+
+    </form>
+
+
+    <div style="    text-align: center;
+    margin-top: 24px;" class="error_msg" *ngIf="invalidUser">
+      Invalid Number or Password
+    </div>
+  </div>
+
+</ion-content>

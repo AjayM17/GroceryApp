@@ -1,0 +1,254 @@
+<ion-content>
+
+  <div class="containor">
+    <ion-icon class="back-icon" name="chevron-back-outline" (click)="goBack()"></ion-icon>
+    <div class="header">
+      <div class="logo">
+
+      </div>
+      <div class="h1">
+        <span *ngIf="signup_step == 1">
+          Welcome 
+        </span>
+        <span *ngIf="signup_step == 2">
+          Verification
+        </span>
+       
+      </div>
+      <div class="h2">
+        <span *ngIf="signup_step == 1">
+
+          Sign up to start ordering
+        </span>
+        <span *ngIf="signup_step == 2">
+
+          Enter the OTP code you recieved via SMS
+        </span>
+      </div>
+    </div>
+    <div *ngIf="signup_step == 2" class="otp_page">
+      <ion-item class="ion-no-padding" style="width: 100%;">
+        <ion-input type="text" placeholder="Enter OTP" [(ngModel)]="otp_number"  >
+        </ion-input>
+      </ion-item>
+      <div style="    display: flex;
+      flex-direction: column;
+      align-items: center;">
+      <ion-button class="otp_btn" (click)="verifyOTP()" >Verify</ion-button>
+      <div style="font-size: 14px;
+      margin-top: 8px;
+   color: 'var(--ion-color-neutral1)';" >
+        Didn't Receive the OTP? <span style="font-weight: 500;color:'var(--ion-color-secondary1)'" (click)="generateOTP()"> Resend Code</span>
+      </div>
+    </div>
+    </div>
+    <form *ngIf="signup_step == 1" class="form-containor" [formGroup]="registerForm" (ngSubmit)="submitForm()">
+      <div>
+        <ion-item class="ion-no-padding">
+          <ion-input type="text" placeholder="Enter Name"  formControlName="name">
+          </ion-input>
+        </ion-item>
+
+        <div *ngIf="getFormControls.name.errors && formSubmitted">
+          <div *ngIf="getFormControls.name.errors.required" class="error_msg" >
+            please enter  name
+          </div>
+          
+        </div>
+
+        <ion-item class="ion-no-padding">
+          <ion-input type="tel" placeholder="Enter phone number" maxlength="10"  formControlName="mobile_number">
+          </ion-input>
+        </ion-item>
+
+        <div *ngIf="getFormControls.mobile_number.errors && formSubmitted">
+          <div *ngIf="getFormControls.mobile_number.errors.required" class="error_msg">
+            please enter mobile number
+          </div>
+          <div *ngIf="getFormControls.mobile_number.errors.minlength" class="error_msg">
+           mobile number should be length of 10 digits
+          </div>
+          <div *ngIf="getFormControls.mobile_number.errors.maxlength" class="error_msg">
+            mobile number should be length of 10 digits
+           </div>
+        </div>
+
+        <ion-item class="ion-no-padding">
+          <ion-input type="email" placeholder="Enter Email"  formControlName="email">
+          </ion-input>
+        </ion-item>
+
+        <div *ngIf="getFormControls.email.errors && formSubmitted">
+          <div *ngIf="getFormControls.email.errors.required" class="error_msg" >
+            please enter  email
+          </div>
+          <div *ngIf="getFormControls.email.errors.pattern" class="error_msg" >
+            invalid email
+          </div>
+        </div>
+        <ion-item class="ion-no-padding">
+
+          <ion-input [type]="password_visible ? 'text':'password'" placeholder="Enter password"
+            formControlName="password"></ion-input>
+          <ion-icon style="font-size: 18px;" [name]="password_visible ? 'eye-off-outline' :'eye-outline'"
+            (click)='togglePasswordVisibility()'></ion-icon>
+        </ion-item>
+        <div *ngIf="getFormControls.password.errors && formSubmitted">
+          <div *ngIf="getFormControls.password.errors.required" class="error_msg">
+            please enter password
+          </div>
+        </div>
+
+
+        <ion-item class="ion-no-padding">
+
+          <ion-input [type]="re_password_visible ? 'text':'password'" placeholder="Re-enter password"
+            formControlName="re_password"></ion-input>
+          <ion-icon style="font-size: 18px;" [name]="re_password_visible ? 'eye-off-outline' :'eye-outline'"
+            (click)='toggleRePasswordVisibility()'></ion-icon>
+        </ion-item>
+
+        <div *ngIf="getFormControls.re_password.errors && formSubmitted">
+          <div *ngIf="getFormControls.re_password.errors.required" class="error_msg" >
+            please enter confirm password
+          </div>
+          <div *ngIf="getFormControls.re_password.errors.minlength" class="error_msg" >
+            password should be 6 characters
+          </div>
+          <div *ngIf="getFormControls.re_password.errors.mustMatch" class="error_msg" >
+            password should same
+          </div>
+        </div>
+
+        
+        <!-- <div class="forgot_password">
+          Forgot Password?
+        </div> -->
+
+        <div class="terms" [ngStyle]="{'color' : (getFormControls.terms.errors && formSubmitted) ? '#dc3545' : '#4d4d4d'}" style="justify-content: center;">
+          <ion-checkbox formControlName="terms"></ion-checkbox>
+          <span> I agree to the </span><span [ngStyle]="{'color' : (getFormControls.terms.errors && formSubmitted) ? '#dc3545' : 'var(--ion-color-secondary1)'}"  style="margin-left: 2px;"> Terms and Conditions</span>
+        </div>
+      </div>
+      <div class="form-footer">
+        <ion-button class="btn" type="submit">Sign up</ion-button>
+        <div style="font-size: 14px;; color: 'var(--ion-color-neutral1)';" routerLink="/login">
+         Already have an account? <span style="font-weight: 500;color:'var(--ion-color-secondary1)'"> Login</span>
+        </div>
+      </div>
+
+    </form>
+
+
+    
+  </div>
+
+</ion-content>
+
+
+
+
+
+<!-- <ion-content>
+  <div class="div-center">
+    <div class="step1" *ngIf="signup_step == 1">
+      <div class="heading1">
+        Create Account
+      </div>
+      <ion-item class="ion-no-padding">
+        <ion-label position="floating">Mobile Number</ion-label>
+        <ion-input type="tel" maxlength="10" [(ngModel)] = "mobile_number"></ion-input>
+      </ion-item>
+      <div *ngIf="mobileInvalid" class="error_msg">
+        Please enter mobile number
+      </div>
+
+      <ion-button expand="block" class="btn" (click)="generateOTP()">Generate OTP</ion-button>
+    </div>
+    <div class="step2" *ngIf="signup_step == 2">
+      <div class="heading1">
+        Enter OTP
+      </div>
+      <div class="otp_filed">
+        <ion-input  #otp1 type="tel" maxlength="1" [(ngModel)]="otp_number1" (ionChange)="nextToFocus(1)"></ion-input>
+        <ion-input #otp2 type="tel" maxlength="1" [(ngModel)]="otp_number2"  (ionChange)="nextToFocus(2)" style="margin: 0px 16px;"></ion-input>
+        <ion-input #otp3 type="tel" maxlength="1" [(ngModel)]="otp_number3"  (ionChange)="nextToFocus(3)" style="margin: 0px 16px;"></ion-input>
+        <ion-input #otp4 type="tel" maxlength="1" [(ngModel)]="otp_number4" (ionChange)="nextToFocus(4)" ></ion-input>
+      </div>
+      <div *ngIf="otpInvalid" class="error_msg" style="margin-top: 12px;">
+        Please enter OTP number
+      </div>
+      <ion-button expand="block" class="btn" (click)="submitOTP()">Submit OTP</ion-button>
+    </div>
+    <div class="step3" *ngIf="signup_step == 3">
+      <div class="heading1">
+        Complete Your Account
+      </div>
+      <form [formGroup]="registerForm" (ngSubmit)="registerUser()">
+      <ion-item class="ion-no-padding">
+        <ion-label position="floating" >Enter Name</ion-label>
+        <ion-input type="text" formControlName="name"></ion-input>
+      </ion-item>
+
+      <div *ngIf="getFormControls.name.errors && formSubmitted">
+        <div *ngIf="getFormControls.name.errors.required" class="error_msg" >
+          please enter  name
+        </div>
+      </div>
+      <ion-item class="ion-no-padding">
+        <ion-label position="floating" >Enter Email</ion-label>
+        <ion-input type="email" formControlName="email"></ion-input>
+      </ion-item>
+
+      <div *ngIf="getFormControls.email.errors && formSubmitted">
+        <div *ngIf="getFormControls.email.errors.required" class="error_msg" >
+          please enter  email
+        </div>
+        <div *ngIf="getFormControls.email.errors.pattern" class="error_msg" >
+          invalid email
+        </div>
+      </div>
+
+      <ion-item class="ion-no-padding">
+        <ion-label position="floating">Enter Password</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+      <div *ngIf="getFormControls.password.errors && formSubmitted">
+        <div *ngIf="getFormControls.password.errors.required" class="error_msg" >
+          please enter  password
+        </div>
+        <div *ngIf="getFormControls.password.errors.minlength" class="error_msg" >
+          password should be 6 characters
+        </div>
+       
+      </div>
+     
+      <ion-item class="ion-no-padding">
+        <ion-label position="floating">Confirm Password</ion-label>
+        <ion-input type="password" formControlName="re_password"></ion-input>
+      </ion-item>
+      <div *ngIf="getFormControls.re_password.errors && formSubmitted">
+        <div *ngIf="getFormControls.re_password.errors.required" class="error_msg" >
+          please enter confirm password
+        </div>
+        <div *ngIf="getFormControls.re_password.errors.minlength" class="error_msg" >
+          password should be 6 characters
+        </div>
+        <div *ngIf="getFormControls.re_password.errors.mustMatch" class="error_msg" >
+          password should same
+        </div>
+      </div>
+     
+      <div class="terms" [ngStyle]="{'color' : (getFormControls.terms.errors && formSubmitted) ? '#dc3545' : '#4d4d4d'}">
+        <ion-checkbox formControlName="terms"></ion-checkbox>
+        <span>I Agree Terms & Conditions</span>
+      </div>
+      <ion-button expand="block" class="btn" type="submit" >Sign Up</ion-button>
+    </form>
+    </div>
+    <div class="back" routerLink="/login" routerDirection="backword">
+      <ion-icon name="chevron-back-outline"></ion-icon>
+      <div>Back to Login</div>
+    </div>
+  </div>
+</ion-content> -->

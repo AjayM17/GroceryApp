@@ -1,0 +1,41 @@
+.side-menu{
+    .logo{
+        width: 200px;
+            height: 100px;
+            background-size: contain;
+            background-position: center;
+            background-repeat:no-repeat;
+            margin-bottom: 16px;
+            background-image: url('../../../assets/logo.png');
+    }
+
+    ion-grid{
+        ion-row{
+            font-size: 16px;
+            padding: 8px;
+            color:var(--ion-color-neutral1)
+        
+        }
+    }
+}
+
+.tab-containor{
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    // color: var(--ion-color-secondary1);
+    // background: var(--ion-color-secondary2);
+    // border-radius: 4px;
+    // padding: 6px;
+
+    ion-icon{
+        font-size: 18px;
+    }
+    ion-label{
+        margin-left: 6px;
+        font-size: 13px;
+        font-weight: 500
+    }
+
+    // background: url('');
+}

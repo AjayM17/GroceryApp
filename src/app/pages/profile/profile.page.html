@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="header">
+      <ion-icon class="menu-icon" name="menu-outline" (click)="toggleMenu()"></ion-icon>
+      <div style="flex: 1;
+      text-align: center;">
+        My Profile
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+ <ion-grid style="padding:  0;">
+   <ion-row class="profile">
+     <ion-col size="10">
+       <div class="name">
+        {{user_details.name}}
+       </div>
+       <div class="phone">
+        {{user_details.mobile_number}}
+       </div>
+       <div class="phone">
+        {{user_details.email}}
+       </div>
+      
+     </ion-col>
+     <ion-col class="edit" routerLink="/edit-profile">
+      Edit
+     </ion-col>
+
+   </ion-row>
+   <ion-row class="list-item" routerLink="/address">
+     <ion-col size="1">
+      <ion-icon name="location-outline" style="font-size: 19px;"></ion-icon>
+     </ion-col>
+     <ion-col size="10">
+       Manage Address
+    </ion-col>
+    <ion-col size="1">
+      <ion-icon name="chevron-forward-outline" style="font-size: 18px;"></ion-icon>
+    </ion-col>
+   </ion-row>
+
+   <ion-row class="list-item" routerLink="/order">
+    <ion-col size="1">
+      <ion-icon name="history"></ion-icon>
+    </ion-col>
+    <ion-col size="10">
+      Order history
+   </ion-col>
+   <ion-col size="1">
+    <ion-icon name="chevron-forward-outline" style="font-size: 18px;"></ion-icon>
+   </ion-col>
+  </ion-row>
+
+  <ion-row class="list-item" routerLink="/offers">
+    <ion-col size="1">
+      <ion-icon name="tag" style="font-size: 18px;"></ion-icon>
+    </ion-col>
+    <ion-col size="10">
+      Offers
+   </ion-col>
+   <ion-col size="1">
+    <ion-icon name="chevron-forward-outline" style="font-size: 18px;"></ion-icon>
+   </ion-col>
+  </ion-row>
+  <ion-row class="list-item" (click)="logOut()">
+    <ion-col size="1">
+      <ion-icon name="log-out-outline" style="font-size: 19px;"></ion-icon>
+    </ion-col>
+    <ion-col size="10">
+      Logout
+   </ion-col>
+   <ion-col size="1">
+    <ion-icon name="chevron-forward-outline" style="font-size: 18px;"></ion-icon>
+   </ion-col>
+  </ion-row>
+ </ion-grid>
+</ion-content>

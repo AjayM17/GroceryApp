@@ -1,0 +1,380 @@
+<ion-header>
+  <ion-toolbar>
+    
+    <div style="display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 4px;">
+     
+        <ion-back-button></ion-back-button>
+     
+      <div>
+        Place order
+  
+      </div>
+      <div style="    width: 64px;
+      ">
+        <span (click)="showInvoice()" *ngIf="order_details != null" style="    padding: 5px;
+        border: 1px solid white;
+        border-radius: 4px;
+        font-weight: 400;
+        font-size: 16px;
+    ">
+            Invoice
+        </span>
+      </div>
+    </div>
+    
+   
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div  [ngStyle]="{'display' : show_invoice ?'block':'none'}" style="    position: absolute;
+  width: 100%;
+  
+  background: #00000054;
+  z-index: 99999;">
+
+  
+  <div  style="      padding: 16px;
+  background: white;
+  margin: 42px 6px 6px 6px;
+  border-radius: 4px;" >
+  <div #invoice>
+  <div style="    text-align: center;">
+    <img style="    width: 150px;
+    height: 100px;" [src]="base"/>
+  </div>
+  
+    <div style="    text-align: center;
+    font-size: 19px;
+    font-weight: 500;
+    margin-bottom: 10px;">Fresh From Vypin</div>
+      <div style="    text-align: center;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 10px;">
+      <div>
+        ADDRESS:
+
+        VI/448A, Edavanakad P O,
+        Vypin, Ernakulam (Kerala), -682502
+      </div>
+      <div>
+        PHONE:
+        +91 9061294146
+      </div>
+    </div>
+    <div style="
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    margin-bottom: 10px;
+"> Invoice </div>
+    <div *ngIf="order_details != null" style="      display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-weight: 500;
+    margin-bottom: 8px;
+">
+      <div>
+        Order no. {{order_details.id}}
+      </div>
+      <div>
+        Date: {{order_details.order_date | date}}
+      </div>
+    </div>
+    <div style="        display: flex;
+    flex-direction: row;
+    font-weight: 500;
+    margin-bottom: 8px;
+">
+      <div style="width: 40%;">
+        Product
+      </div>
+      <div style="width: 30%; text-align: center;">
+        Qty.
+      </div>
+      <div style="width: 30%; text-align: right;">
+        Prc.
+      </div>
+    </div>
+    <div *ngFor="let order of cart_items" style="    display: flex;
+    flex-direction: row;    margin-bottom: 8px;">
+      <div style="width: 40%;">
+        {{order.product_name}}
+      </div>
+      <div style="width: 30%; text-align: center;">
+        {{order.quanity_value}}
+      </div>
+      <div style="width: 30%; text-align: right;">
+        {{order.product_price * order.quanity_value}}
+      </div>
+    </div>
+
+    <div style="    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 8px;
+">
+      <div>
+        Amt.
+      </div>
+      <div>
+        Rs {{amount}}
+      </div>
+    </div>
+
+    <div style="    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 8px;
+">
+      <div>
+        Tax
+      </div>
+      <div>
+        0%
+      </div>
+    </div>
+
+    <div style="    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 8px;
+">
+      <div>
+       Delivery Charges
+      </div>
+      <div>
+        Rs {{delivery_charges}}
+      </div>
+    </div>
+    <div style="    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 8px;
+
+    font-weight: 500;
+
+">
+      <div>
+        Total
+      </div>
+      <div>
+        Rs{{total_amount}}
+      </div>
+    </div>
+    <div style="margin-bottom: 8px;
+
+    font-weight: 500;">
+      <div>
+        Delivery Address: 
+      </div>
+     
+      <div *ngIf="order_details != null">
+        {{order_details.delivery_address}}
+      </div>
+
+      
+    </div>
+
+    <div style="text-align: center; font-weight: 500;    font-size: 14px;
+    margin: 16px 0px;
+">
+      
+      Thank you for shopping at FreshFromVypin. Your business is greatly
+      appreciated. Please come back soon.
+    
+    </div>
+    </div>
+    <div style="    display: flex;
+    margin-top: 13px;
+    justify-content: space-between;">
+      <div style="color: #4c4c4c;
+      font-weight: 500;
+     
+      padding: 8px 10px;
+      border: 1px solid #4c4c4c;
+      border-radius: 3px;"
+      (click)="hideInvoice()"
+      >
+Cancel
+      </div>
+      <div (click)="generateInvoice()" style="    color: #01a65a;
+      padding: 8px 16px;
+      border: 1px solid #01a65a;
+      border-radius: 3px;">
+        Save
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+
+  
+  <ion-grid style="
+  border-bottom: 2px solid var(--ion-color-neutral2);
+  padding-bottom: 8px;
+">
+    <ion-row class="ion-align-items-center" style=" color: var(--ion-color-neutral1);
+    ">
+      <ion-col size="1">
+        <ion-icon style="font-size:13px" name="newspaper-outline"></ion-icon>
+      </ion-col>
+      <ion-col size="11" style="font-weight: bold;
+      font-size: 18px;">
+        Bill
+      </ion-col>
+
+    </ion-row>
+    <ion-row class="bill-titles">
+      <ion-col size="6" offset="1">
+        Items
+      </ion-col>
+      <ion-col>
+        Qty.
+      </ion-col>
+      <ion-col>
+        Prc.
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngFor="let order of cart_items" style="    font-size: 14px;
+    color: var(--ion-color-neutral1);">
+      <ion-col size="6" offset="1">
+        {{order.product_name}}
+      </ion-col>
+      <ion-col>
+        {{order.quanity_value}}
+      </ion-col>
+      <ion-col>
+        {{order.product_price * order.quanity_value}}
+      </ion-col>
+    </ion-row>
+    <ion-row class="bill-titles" style="    border-top: 1px solid var(--ion-color-neutral2);
+    margin-top: 5px;">
+      <ion-col size="7" offset="1">
+        Amt.
+      </ion-col>
+      <ion-col class="ion-text-center" size="4">
+        Rs {{amount}}
+      </ion-col>
+    </ion-row>
+    <ion-row class="bill-titles">
+      <ion-col size="7" offset="1">
+        Tax
+      </ion-col>
+      <ion-col class="ion-text-center" size="4">
+        0%
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="bill-titles">
+      <ion-col size="7" offset="1">
+        Delivery charge
+      </ion-col>
+      <ion-col class="ion-text-center" size="4">
+        Rs {{delivery_charges}}
+      </ion-col>
+    </ion-row>
+    <ion-row class="bill-titles" style="    border-top: 1px solid var(--ion-color-neutral2);
+    margin-top: 5px;">
+      <ion-col size="7" offset="1">
+        Total
+      </ion-col>
+      <ion-col class="ion-text-center" size="4">
+        {{total_amount}}
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-row class="bill-titles" style="border-bottom: 2px solid var(--ion-color-neutral2);
+  padding-bottom: 4px;
+  padding-top: 4px;
+">
+    <ion-col size="1">
+
+    </ion-col>
+    <ion-col>
+      Apply Offers
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="1">
+      <ion-icon style="   
+      color: var(--ion-color-neutral1);" name="location-outline"></ion-icon>
+    </ion-col>
+    <ion-col size="9" class="bill-titles">
+      Deliver to
+    </ion-col>
+    <ion-col size="2" style="    font-size: 13px;
+    font-weight: 500;
+    color: var(--ion-color-secondary1);" routerLink="/address">
+      Change
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col offset="1" style="font-size: 13px;">
+      {{delivery_address}}
+    </ion-col>
+  </ion-row>
+
+  <div class="slot_conatinor">
+    <div class="delivery_slot">
+      <ion-icon name="time-outline"></ion-icon>
+      <div style="font-weight: 500;
+    color: var(--ion-color-neutral1);"> Delivery time:</div>
+
+      <div class="containor" (click)="toggleDateDropDown()">
+        <div style="position: relative;">
+          <div class="title">
+            <span *ngIf="(selected_delivery_date| date:'dd/MM/yy') == (today_date |date:'dd/MM/yy')"> Today</span>
+            <span *ngIf="(selected_delivery_date| date:'dd/MM/yy') != (today_date |date:'dd/MM/yy')">
+              {{selected_delivery_date | date:'dd/MM/yy'}}</span>
+          </div>
+          <div class="dropdown" *ngIf="showDateDropdown" style="transform: translateY(-148px);">
+            <div class="item" *ngFor="let delivery_date of delivery_dates" (click)="setDeliveryDate(delivery_date)">
+
+              <span *ngIf="(delivery_date| date:'dd/MM/yy') == (today_date |date:'dd/MM/yy')"> Today</span>
+              <span *ngIf="(delivery_date| date:'dd/MM/yy') != (today_date |date:'dd/MM/yy')">
+                {{delivery_date | date:'dd/MM/yy'}}</span>
+
+            </div>
+          </div>
+        </div>
+        <ion-icon name="chevron-down-outline"></ion-icon>
+      </div>
+
+
+      <div class="containor" (click)="toggleTimeDropDown()">
+        <div style="position: relative;">
+          <div class="title" style="width: 104px !important;">{{selected_delivery_time}}</div>
+          <div class="dropdown" *ngIf="showTimeDropdown" style="transform: translateY(-174px);">
+            <div class="item" style="width: 102px;" *ngFor="let time of delivery_time" (click)="setDeliveryTime(time)">
+              {{time }}
+            </div>
+          </div>
+        </div>
+        <ion-icon name="chevron-down-outline"></ion-icon>
+      </div>
+    </div>
+  </div>
+
+
+</ion-content>
+
+<ion-footer>
+  <div class="buttons">
+    <ion-button class="buy btn" (click)="placeOrder()">
+      Cash
+    </ion-button>
+    <ion-button class="btn add" (click)="placeOrder()">
+
+      <ion-icon style="    margin-right: 5px;" name="wallet"></ion-icon>
+      Pay
+    </ion-button>
+  </div>
+</ion-footer>

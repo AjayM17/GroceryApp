@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="header">
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <div style="flex: 1;
+      text-align: center;">
+        Fresh From Vypin
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="product-containor">
+    <app-card class="card" (click)="productDetails(product)" *ngFor="let product of products" [product_image]="IMAGES_BASE_URL +product.a_img"
+    [product]="product">
+    </app-card>
+  </div>
+</ion-content>

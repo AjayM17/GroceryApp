@@ -1,0 +1,138 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="header">
+      <ion-icon class="menu-icon" (click)="toggleMenu()" name="menu-outline"></ion-icon>
+      <div style="flex: 1;
+      text-align: center;">
+        My Cart
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="slot_conatinor">
+    <div class="delivery_slot">
+      <div style="font-weight: 500;
+    color: var(--ion-color-neutral1);"> Delivery time:</div>
+
+      <div class="containor" (click)="toggleDateDropDown()">
+        <div style="position: relative;">
+          <div class="title" style="width: 88px;">
+            <span *ngIf="(selected_delivery_date| date:'dd/MM/yy') == (today_date |date:'dd/MM/yy')"> Today</span>
+            <span *ngIf="(selected_delivery_date| date:'dd/MM/yy') != (today_date |date:'dd/MM/yy')">
+              {{selected_delivery_date | date:'dd/MM/yy'}}</span>
+          </div>
+          <div class="dropdown" *ngIf="showDateDropdown">
+            <div class="item" *ngFor="let delivery_date of delivery_dates" (click)="setDeliveryDate(delivery_date)">
+
+              <span *ngIf="(delivery_date| date:'dd/MM/yy') == (today_date |date:'dd/MM/yy')"> Today</span>
+              <span *ngIf="(delivery_date| date:'dd/MM/yy') != (today_date |date:'dd/MM/yy')">
+                {{delivery_date | date:'dd/MM/yy'}}</span>
+
+            </div>
+          </div>
+        </div>
+        <ion-icon name="chevron-down-outline"></ion-icon>
+      </div>
+
+
+      <div class="containor" (click)="toggleTimeDropDown()">
+        <div style="position: relative;">
+          <div class="title" style="width: 104px;">{{selected_delivery_time}}</div>
+          <div class="dropdown" *ngIf="showTimeDropdown">
+            <div class="item" style="width: 102px !important;" *ngFor="let time of delivery_time" (click)="setDeliveryTime(time)">
+              {{time }}
+            </div>
+          </div>
+        </div>
+        <ion-icon name="chevron-down-outline"></ion-icon>
+      </div>
+    </div>
+  </div>
+  <div style="    margin-top: 59px;
+  margin-left: 8px;
+  margin-right: 8px;">
+    <div *ngFor="let cart_item of cart_items; let cart_index = index" class="cart-item">
+      <ion-icon style="    position: absolute;
+      right: 0px;
+    top: 1px;
+  font-size: 28px;" (click)="removeItemFromCart(cart_index)" name="close-outline"></ion-icon>
+
+      <div class="product-image"
+        [ngStyle]="{'background-image' : 'url(' + IMAGES_BASE_URL + cart_item.product_image  + ')'}">
+      </div>
+      <div class="product_detail">
+        <div class="product_name">
+          {{cart_item.product_name}}
+          <div style="font-size: 13px;
+        font-weight: 400;
+        margin-top: 2px;
+        opacity: 0.8;">
+            Fresh water fish
+          </div>
+        </div>
+
+        <div class="controls-containor">
+          <div class="controls">
+            <ion-icon class="decre" name="remove-outline" (click)="desceaseQuantity(cart_index)"></ion-icon>
+            <span class="value"> {{cart_item.quanity_value * 2}}</span>
+            <ion-icon class="incre" name="add-outline" (click)="increaseQuanity(cart_index)"></ion-icon>
+          </div>
+          <div class="detail">
+
+            <span *ngIf="cart_item.quanity_value == 0.5"> 500 gm</span>
+            <span *ngIf="cart_item.quanity_value > 0.5">
+              {{cart_item.quanity_value}} Kg
+            </span>
+          
+ <ion-icon style="    margin-left: 10px;
+ " src='../assets/icon/inr.svg' ></ion-icon>
+            
+
+            <span>
+              {{cart_item.product_price * cart_item.quanity_value}}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+<ion-footer>
+  <div style="display: flex;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  margin-top: 2px;
+ ">
+    <div style="    display: flex;
+   ">
+      <ion-icon style="   
+      color: var(--ion-color-neutral1);" name="location-outline"></ion-icon>
+      <div style="    font-size: 18px;
+      margin-left: 10px;
+      color: var(--ion-color-neutral1);">
+
+        <div style=" font-size: 17px;">Deliver to</div>
+        <div style="    font-size: 14px;">{{delivery_address}}</div>
+      </div>
+    </div>
+
+    <div style=" font-size: 14px;   color: var(--ion-color-secondary1);
+    font-weight: 500;" routerLink="/address">Change</div>
+
+  </div>
+  <div class="buttons">
+    <ion-button class="buy btn">
+      {{total_amount}}
+                
+ <ion-icon slot="start" style=" font-size: 14px;   margin-left: 10px;
+ " src='../assets/icon/inr.svg' ></ion-icon>
+    
+    </ion-button>
+    <ion-button class="btn add" (click)="goToPlaceOrder()">
+      Place order
+      <ion-icon slot="start" name="cart-outline"></ion-icon>
+    </ion-button>
+  </div>
+</ion-footer>

@@ -1,0 +1,110 @@
+.invoice{
+    .title{
+        text-align: center;
+    }
+}
+
+.bill-titles{
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ion-color-neutral1);
+
+}
+
+.slot_conatinor{
+    display: flex;
+    justify-content: space-between;
+    background: var(--ion-color-neutral2);
+    padding-top: 2px;
+    color: var(--ion-color-neutral1);
+    font-size: 14px;
+    align-items: center;
+    // position: fixed;
+    z-index: 999;
+    width: 100%;
+    /* padding-left: 8px; */
+    padding-bottom: 2px;
+    /* padding-right: 8px;*/
+
+.delivery_slot{
+    display: flex;
+    justify-content: space-between;
+    background: white;
+    padding: 8px;
+    color: var(--ion-color-neutral1);
+    font-size: 14px;
+    align-items: center;
+    flex: 1;
+
+    .containor{
+        display: flex;
+        align-items: center;
+        ion-icon{
+            font-size: 22px;
+        }
+        .title{
+            position: relative;
+            padding: 5px 7px;
+            background-color: rgba(221, 238, 222, 0.8);
+            color: var(--ion-color-secondary1);
+            font-weight: 500;
+            width: 80px;
+            border-radius: 3px;
+            text-align: center;
+        }
+    
+    }
+
+    .dropdown{
+        position: absolute;
+        background: white;
+        z-index: 999;
+        box-shadow: 0 0px 0px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.23);
+         .item{
+            padding: 4px 8px;
+            border-bottom: 1px solid var(--ion-color-neutral2);
+            color: var(--ion-color-neutral1);
+            font-weight: 400;
+            font-size: 13px;
+            width: 72px;
+            text-align: center;
+         }
+    }
+
+}
+}
+
+ion-footer{
+    
+    padding: 8px 12px;
+    background-color: rgba(221, 238, 222, 0.8);
+    
+
+    .buttons{
+        justify-content: space-evenly;
+        display: flex;
+        .btn{
+            // --padding-start: 10px;
+            // --padding-end: 10px;
+            width: 22vh;
+            text-transform: none;
+            height: 38px;
+            font-size: 16px;
+           
+            --padding-top: 0px;
+            --padding-bottom: 0px;
+            &.add{
+                color: var(--ion-color-neutral3);
+                --background: var(--ion-color-secondary1);
+            }
+
+            &.buy{
+                color: var(--ion-color-neutral1);
+    --background: var(--ion-color-neutral3);
+    // font-weight: 600;
+            }
+           
+        }
+
+    }
+}

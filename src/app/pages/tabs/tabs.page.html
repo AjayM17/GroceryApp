@@ -1,0 +1,114 @@
+<ion-app>
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" type="overlay">
+      <ion-content class="side-menu">
+        <div class="ion-justify-content-center" style="display: flex;     border-bottom: 1px solid var(--ion-color-neutral2);">
+          <div class="logo">
+
+          </div>
+        </div>
+        
+        <ion-grid>
+          
+          <ion-row>
+            <ion-col size="1">
+              <ion-icon name="bell"></ion-icon>
+            </ion-col>
+            <ion-col size="10" style="
+            padding-left: 16px;
+        ">
+              Notification
+            </ion-col>
+            
+
+          </ion-row>
+          <ion-row>
+            <ion-col size="1">
+              <ion-icon name="register"></ion-icon>
+            </ion-col>
+            <ion-col size="10"  style="
+            padding-left: 16px;
+        ">
+             Terms and onditions
+            </ion-col>
+            
+
+          </ion-row>
+          <ion-row>
+            <ion-col size="1">
+              <ion-icon name="help"></ion-icon>
+            </ion-col>
+            <ion-col size="10"  style="
+            padding-left: 16px;
+        ">
+              Help
+            </ion-col>
+            
+
+          </ion-row>
+          <ion-row routerLink="/policy">
+            <ion-col size="1">
+              <ion-icon name="shield-checkmark-outline"></ion-icon>
+            </ion-col>
+            <ion-col size="10"  style="
+            padding-left: 16px;
+        ">
+            Privacy Policy
+            </ion-col>
+            
+
+          </ion-row>
+          <ion-row routerLink="/aboutus">
+            <ion-col size="1">
+              <ion-icon name="app"></ion-icon>
+            </ion-col>
+            <ion-col size="10"  style="
+            padding-left: 16px;
+        ">
+              About App
+            </ion-col>
+            
+
+          </ion-row>
+        </ion-grid>
+      </ion-content>
+    </ion-menu>
+  
+      <ion-tabs id="main-content">
+        <ion-tab-bar slot="bottom">
+          <ion-tab-button tab="home">
+            <div class="tab-containor">
+              <ion-icon name="home1"></ion-icon>
+              <ion-label>Home</ion-label>
+            </div>
+           
+          </ion-tab-button>
+      
+          <!-- <ion-tab-button tab="search">
+            <ion-icon name="search-outline"></ion-icon>
+            <ion-label>Search</ion-label>
+          </ion-tab-button> -->
+      
+          <ion-tab-button tab="cart" (click)="getCartList()">
+            <div class="tab-containor">
+              <ion-icon name="shopping-cart3"></ion-icon>
+              <ion-label>Cart</ion-label>
+              <ion-badge style="margin-left: 2px;">{{cart_count}}</ion-badge>
+            </div>
+          </ion-tab-button>
+      
+          <ion-tab-button tab="account">
+           
+            <div class="tab-containor">
+              <ion-icon name="profile"></ion-icon>
+              <ion-label>Me</ion-label>
+            </div>
+          </ion-tab-button>
+      
+         
+        </ion-tab-bar>
+      </ion-tabs>
+  
+    
+  </ion-split-pane>
+</ion-app>
