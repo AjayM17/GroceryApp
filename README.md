@@ -1,5 +1,5 @@
 # FreshMeat
-The Project is build in Ionic using Angular and plugin add using capacitor
+
 
 Screens
 
