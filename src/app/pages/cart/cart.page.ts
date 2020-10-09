@@ -19,7 +19,7 @@ export class CartPage implements OnInit {
   total_amount = 0
   user_details = null
   delivery_dates = []
-  delivery_time = ['9am - 10am','10am - 11am', '11am - 12pm','3pm - 4pm','4pm - 5pm','5pm - 6pm']
+  delivery_time = ['8am - 10am','10am - 12pm', '2pm - 4pm','4pm - 6pm']
   today_date= new Date()
   showDateDropdown = false
   showTimeDropdown = false

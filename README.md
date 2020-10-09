@@ -5,16 +5,12 @@ Screens
 
 Login
 SignUp
-
 Home Screen conation search and filter with listing of Fresh Items
-
 Cart Screen
-
 Place Order Screen
-
-Payment Screen
-
 Order Details
- Manage Address
- 
- Profile
+Manage Address Screen
+Profile Page
+
+
+![](readme_images/image_1.png)
